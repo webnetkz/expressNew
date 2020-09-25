@@ -5,7 +5,8 @@
        left: 0;
        width: 100vw;
        height: 50px;
-       box-shadow: 0 0 6px rgb(0, 0, 0); 
+       box-shadow: 0 0 6px rgb(0, 0, 0);
+       background-color: rgb(255, 255, 255);
     }
     header > .logo {
         background-color: rgb(56, 60, 72);

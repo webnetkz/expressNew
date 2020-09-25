@@ -1,18 +1,19 @@
 <style>
     section {
         position: fixed;
-        top: 50px;
+        top: 55px;
         left: 300px;
-        padding: 20px;
         width: calc(100vw - 300px);
-        height: calc(100vh - 50px);
+        height: calc(100vh - 100px);
         background-color: rgb(238, 238, 238);
         animation: showContent 300ms linear;
-        z-index: -1
+        z-index: -1;
+        overflow-Y: auto;
+        padding-bottom: 50px;
     }
     .list {
         display: block;
-        width: 90%;
+        width: calc(100% - 60px);
         padding: 5px;
         background-color: rgb(255, 255, 255);
         margin: 5px;
@@ -25,8 +26,18 @@
         color: rgb(255, 255, 255);
         background-color: rgb(3, 155, 230);
     }
+    td {
+        padding: 5px;
+    }
+    tr {
+        transition-duration: 500ms;
+    }
+    tr:hover {
+        background-color: rgb(180, 180, 180);
+        transform: scale(1.1);
+    }
 </style>
-<section>
+<section style="padding-bottom: 200px;">
     <?php
         echo $content;
     ?>

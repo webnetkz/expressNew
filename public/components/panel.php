@@ -26,4 +26,5 @@
     <a href="<?$_SERVER['SERVER_NAME']?>/wechat/index.php" class="menuItem">Wechat</a>
     <a href="<?$_SERVER['SERVER_NAME']?>/kuaidi/index.php" class="menuItem">Принять по Kuaidi</a>
     <a href="<?$_SERVER['SERVER_NAME']?>/dispatch/index.php" class="menuItem">Посылки</a>
+    <a href="<?$_SERVER['SERVER_NAME']?>/dispatch/countries.php" class="menuItem">Страны</a>
 </nav>
