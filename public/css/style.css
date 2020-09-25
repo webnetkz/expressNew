@@ -1,0 +1,14 @@
+@import "helper.css";
+@import "flex.css";
+@import "animations.css";
+* {
+  --whiteColor: rgb(255, 255, 255);
+  --redColor: rgb(255, 0, 0);
+  --bgColor: #1a1917;
+}
+html, body {
+  font-family: sans-serif;
+  background-color: var(--whiteColor);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
