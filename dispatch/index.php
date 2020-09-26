@@ -30,3 +30,6 @@
         <?php require_once "../public/components/content.php"; ?>
         <?php require_once "../public/components/footer.php"; ?>
 
+        <script>
+        document.querySelector('a[href="<?$_SERVER['SERVER_NAME']?>/dispatch/index.php"]').classList.add('activeMenu');
+    </script>

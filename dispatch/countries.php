@@ -65,4 +65,5 @@
             }
         }
 
+        document.querySelector('a[href="<?$_SERVER['SERVER_NAME']?>/dispatch/countries.php"]').classList.add('activeMenu');
     </script>

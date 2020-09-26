@@ -36,6 +36,24 @@
         background-color: rgb(180, 180, 180);
         transform: scale(1.1);
     }
+    .cart {
+        display: inline-block;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgb(100, 100, 100);
+        margin-left: 30px;
+        margin-top: 30px;
+        width: 200px;
+        height: 100px;
+    }
+    .cart:hover {
+        box-shadow: 0 0 0 rgb(100, 100, 100);
+        border: 1px solid rgb(200, 200, 200);
+    }
+    .cartBg {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
 </style>
 <section style="padding-bottom: 200px;">
     <?php
