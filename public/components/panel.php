@@ -6,6 +6,7 @@
         width: 300px;
         height: 100vh;
         background-color: rgb(46, 50, 62);
+        box-shadow: 0 0 4px rgb(3, 155, 230);
     }
     a.menuItem {
         display: block;

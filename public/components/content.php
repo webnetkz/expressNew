@@ -47,7 +47,6 @@
     }
     .cart:hover {
         box-shadow: 0 0 0 rgb(100, 100, 100);
-        border: 1px solid rgb(200, 200, 200);
     }
     .cartBg {
         width: 100%;

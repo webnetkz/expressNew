@@ -1,8 +1,13 @@
 <?php
 
-    $content = '<a href="kp.php">
+    $content = '<a href="kp.php" style="text-decoration: none;">
                     <div class="cart">
                         <img src="http://'.$_SERVER['SERVER_NAME'].'/public/img/carts/kp.png" class="cartBg">
+                    </div>
+                </a>';
+    $content .= '<a href="kp.php" style="text-decoration: none;">
+                    <div class="cart">
+                        <img src="http://'.$_SERVER['SERVER_NAME'].'/public/img/carts/dwe.png" class="cartBg">
                     </div>
                 </a>';
 
@@ -11,7 +16,6 @@
 <html lang="en">
     <head>
         <title>DWExpress KP</title>
-
         <meta charset="UTF-8">
         <meta name="theme-color" content="rgb(0, 0, 0)">
         <meta name="author" content="">
