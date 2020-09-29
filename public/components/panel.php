@@ -7,6 +7,7 @@
         height: 100vh;
         background-color: rgb(46, 50, 62);
         box-shadow: 0 0 4px rgb(3, 155, 230);
+        z-index: 88;
     }
     a.menuItem {
         display: block;
@@ -33,25 +34,29 @@
     }
 </style>
 <nav>
-    <a href="<?$_SERVER['SERVER_NAME']?>/API/index.php" class="menuItem">
-        <img src="<?$_SERVER['SERVER_NAME']?>/public/img/icons/api.png" class="menuIcon">
+    <a href="<?=$url?>/pages/API/index" class="menuItem">
+        <img src="<?=$url?>/public/img/icons/api.png" class="menuIcon">
          API
     </a>
-    <a href="<?$_SERVER['SERVER_NAME']?>/stickers/index.php" class="menuItem">
-        <img src="<?$_SERVER['SERVER_NAME']?>/public/img/icons/barcode.png" class="menuIcon">
+    <a href="<?=$url?>/pages/stickers/index" class="menuItem">
+        <img src="<?=$url?>/public/img/icons/barcode.png" class="menuIcon">
          Наклейки
     </a>
-    <a href="<?$_SERVER['SERVER_NAME']?>/wechat/index.php" class="menuItem">
-        <img src="<?$_SERVER['SERVER_NAME']?>/public/img/icons/wechat.png" class="menuIcon">
+    <a href="<?=$url?>/pages/wechat/index" class="menuItem">
+        <img src="<?=$url?>/public/img/icons/wechat.png" class="menuIcon">
          Wechat</a>
-    <a href="<?$_SERVER['SERVER_NAME']?>/kuaidi/index.php" class="menuItem">
-        <img src="<?$_SERVER['SERVER_NAME']?>/public/img/icons/scanner.png" class="menuIcon">
+    <a href="<?=$url?>/pages/acceptance/index" class="menuItem">
+        <img src="<?=$url?>/public/img/icons/scanner.png" class="menuIcon">
          Принять</a>
-    <a href="<?$_SERVER['SERVER_NAME']?>/dispatch/index.php" class="menuItem">
-        <img src="<?$_SERVER['SERVER_NAME']?>/public/img/icons/box.png" class="menuIcon">
+    <a href="<?=$url?>/pages/dispatch/index" class="menuItem">
+        <img src="<?=$url?>/public/img/icons/box.png" class="menuIcon">
          Посылки</a>
-    <a href="<?$_SERVER['SERVER_NAME']?>/dispatch/countries.php" class="menuItem">
-        <img src="<?$_SERVER['SERVER_NAME']?>/public/img/icons/planet.png" class="menuIcon">
+    <a href="<?=$url?>/pages/dispatch/countries" class="menuItem">
+        <img src="<?=$url?>/public/img/icons/planet.png" class="menuIcon">
          Страны
+    </a>
+    <a href="<?=$url?>/pages/documentation/index" class="menuItem">
+        <img src="<?=$url?>/public/img/icons/planet.png" class="menuIcon">
+         Документация
     </a>
 </nav>

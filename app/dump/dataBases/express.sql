@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 26 2020 г., 16:45
--- Версия сервера: 10.4.12-MariaDB
+-- Время создания: Сен 29 2020 г., 13:41
+-- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -284,6 +284,31 @@ INSERT INTO `countries` (`code`, `name`, `fullname`, `alpha2`, `alpha3`) VALUES
 (239, 'ЮЖНАЯ ДЖОРДЖИЯ И ЮЖНЫЕ САНДВИЧЕВЫ ОСТРОВА', 'ЮЖНАЯ ДЖОРДЖИЯ И ЮЖНЫЕ САНДВИЧЕВЫ ОСТРОВА', 'GS', 'SGS'),
 (388, 'ЯМАЙКА', 'ЯМАЙКА', 'JM', 'JAM'),
 (392, 'ЯПОНИЯ', 'ЯПОНИЯ', 'JP', 'JPN');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `data_page`
+--
+
+CREATE TABLE `data_page` (
+  `id` int(11) NOT NULL,
+  `title` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `data_page`
+--
+
+INSERT INTO `data_page` (`id`, `title`, `path`) VALUES
+(1, 'DWExpress', '/index'),
+(2, 'WeChat', '/wechat/index'),
+(3, 'API DWE', '/API/index'),
+(4, 'Countries', '/dispatch/countries'),
+(5, 'Stickers', '/stickers/index'),
+(6, 'Acceptance', '/acceptance/index'),
+(7, 'Documentation DWE', '/documentation/index');
 
 -- --------------------------------------------------------
 
@@ -654,6 +679,38 @@ INSERT INTO `kp_codes` (`id`, `code`, `used`) VALUES
 (299, 'RI800002990KG\r', 0),
 (300, 'RI800003003KG', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `protocol` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `settings`
+--
+
+INSERT INTO `settings` (`id`, `url`, `protocol`) VALUES
+(1, 'http://expressnew', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `login` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pass` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` int(2) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -663,6 +720,12 @@ INSERT INTO `kp_codes` (`id`, `code`, `used`) VALUES
 --
 ALTER TABLE `countries`
   ADD PRIMARY KEY (`code`);
+
+--
+-- Индексы таблицы `data_page`
+--
+ALTER TABLE `data_page`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `dispatch_for_kp`
@@ -677,8 +740,26 @@ ALTER TABLE `kp_codes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
+
+--
+-- AUTO_INCREMENT для таблицы `data_page`
+--
+ALTER TABLE `data_page`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `dispatch_for_kp`
@@ -691,6 +772,18 @@ ALTER TABLE `dispatch_for_kp`
 --
 ALTER TABLE `kp_codes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
+
+--
+-- AUTO_INCREMENT для таблицы `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

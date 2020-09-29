@@ -7,7 +7,7 @@
         height: calc(100vh - 100px);
         background-color: rgb(238, 238, 238);
         animation: showContent 300ms linear;
-        z-index: -1;
+        z-index: 1;
         overflow-Y: auto;
         padding-bottom: 50px;
     }
@@ -54,7 +54,7 @@
         border-radius: 10px;
     }
 </style>
-<section style="padding-bottom: 200px;">
+<section style="padding: 10px 10px 200px 10px ;">
     <?php
         echo $content;
     ?>

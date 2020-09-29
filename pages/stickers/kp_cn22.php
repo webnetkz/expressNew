@@ -1,8 +1,10 @@
 <?php
 
+require_once '../../config.php';
+
 $code = trim($_GET['code']);
 
-require_once "../app/db/db.php";
+require_once "../../app/db/db.php";
 
 $data = $pdo->query('SELECT * FROM dispatch_for_kp WHERE BarCode = "'.$code.'"');
 $data = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -60,7 +62,7 @@ $data = $data[0];
 </style>
 <div class="all">
     <header>
-        <img src="../public/img/carts/kp.png" alt="" class="half">
+        <img src="../../public/img/carts/kp.png" alt="" class="half">
         <img alt='Barcode Generator TEC-IT' style="width: 5cm; margin-left: 1cm;" src='https://barcode.tec-it.com/barcode.ashx?data=<?=$code?>&code=Code128&dpi=96&dataseparator=' class="half"/>
 
     </header>
