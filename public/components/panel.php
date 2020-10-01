@@ -34,6 +34,13 @@
     }
 </style>
 <nav>
+    <a href="<?=$url?>/pages/documentation/index" class="menuItem">
+        <img src="<?=$url?>/public/img/icons/planet.png" class="menuIcon">
+         Система
+    </a>
+    <a href="<?=$url?>/pages/dispatch/index" class="menuItem">
+        <img src="<?=$url?>/public/img/icons/box.png" class="menuIcon">
+         Посылки</a>
     <a href="<?=$url?>/pages/API/index" class="menuItem">
         <img src="<?=$url?>/public/img/icons/api.png" class="menuIcon">
          API
@@ -48,15 +55,8 @@
     <a href="<?=$url?>/pages/acceptance/index" class="menuItem">
         <img src="<?=$url?>/public/img/icons/scanner.png" class="menuIcon">
          Принять</a>
-    <a href="<?=$url?>/pages/dispatch/index" class="menuItem">
-        <img src="<?=$url?>/public/img/icons/box.png" class="menuIcon">
-         Посылки</a>
     <a href="<?=$url?>/pages/dispatch/countries" class="menuItem">
-        <img src="<?=$url?>/public/img/icons/planet.png" class="menuIcon">
+        <img src="<?=$url?>/public/img/icons/countries.png" class="menuIcon">
          Страны
-    </a>
-    <a href="<?=$url?>/pages/documentation/index" class="menuItem">
-        <img src="<?=$url?>/public/img/icons/planet.png" class="menuIcon">
-         Документация
     </a>
 </nav>

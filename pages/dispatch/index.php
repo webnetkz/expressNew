@@ -1,6 +1,7 @@
 <?php
 
 require_once '../../config.php';
+$title = 'Dispatch';
 
 require_once "../../public/components/header.php"; 
 require_once "../../public/components/panel.php"; 

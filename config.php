@@ -9,7 +9,6 @@ $global = $global->fetchAll(PDO::FETCH_ASSOC);
 
 $url = $global[0]['url'];
 $uri = $_SERVER['REQUEST_URI'];
-$content = $uri;
 
 // Получение переменных страницы
 $page = $pdo->query('SELECT `title` FROM `data_page` WHERE `path` = "'.$uri.'";');
