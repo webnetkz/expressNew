@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 29 2020 г., 13:41
--- Версия сервера: 10.3.22-MariaDB
+-- Время создания: Окт 01 2020 г., 16:25
+-- Версия сервера: 10.4.12-MariaDB
 -- Версия PHP: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- База данных: `express`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `api_users`
+--
+
+CREATE TABLE `api_users` (
+  `id` int(11) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `token` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `api_users`
+--
+
+INSERT INTO `api_users` (`id`, `login`, `pass`, `token`) VALUES
+(1, 'testLogin', 'testPass', 'd3GER43hog083gfdeDE4dEk4W');
 
 -- --------------------------------------------------------
 
@@ -716,6 +736,12 @@ CREATE TABLE `users` (
 --
 
 --
+-- Индексы таблицы `api_users`
+--
+ALTER TABLE `api_users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `countries`
 --
 ALTER TABLE `countries`
@@ -754,6 +780,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
+
+--
+-- AUTO_INCREMENT для таблицы `api_users`
+--
+ALTER TABLE `api_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `data_page`
