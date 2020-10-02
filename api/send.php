@@ -1,5 +1,5 @@
 <html>
-<head><title>test</title></head>
+<head><title>GetToken</title></head>
 <body>
     <button onclick="submitform()">Test</button>
     </form>
@@ -9,8 +9,8 @@
             xhr.open("POST","/api/getToken.php");
             xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
             let str = {
-	            //"Login":"testLogin",
-                //"Password":"testPass"   
+	            "Login":"testLogin",
+                "Password":"testPass"   
             };
             xhr.responseType = 'json';
             xhr.send(JSON.stringify(str));

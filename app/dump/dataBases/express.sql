@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 01 2020 г., 16:25
+-- Время создания: Окт 02 2020 г., 13:17
 -- Версия сервера: 10.4.12-MariaDB
 -- Версия PHP: 7.2.29
 
@@ -24,6 +24,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `api_test`
+--
+
+CREATE TABLE `api_test` (
+  `id` int(11) NOT NULL,
+  `Country` varchar(255) NOT NULL,
+  `Weight` float NOT NULL,
+  `BagWeight` float NOT NULL,
+  `ReceiverFirstName` varchar(55) NOT NULL,
+  `ReceiverLastName` varchar(55) NOT NULL,
+  `ReceiverPostCode` int(8) NOT NULL,
+  `ReceiverPhoneNumber` varchar(30) NOT NULL,
+  `ReceiverDistrict` varchar(255) NOT NULL,
+  `ReceiverRegion` varchar(255) NOT NULL,
+  `ReceiverCity` varchar(255) NOT NULL,
+  `ReceiverAddress` varchar(500) NOT NULL,
+  `Description` varchar(255) NOT NULL,
+  `TypeOfItems` varchar(255) NOT NULL,
+  `SenderFirstName` varchar(55) NOT NULL,
+  `SenderLastName` varchar(55) NOT NULL,
+  `SenderPostCode` int(8) NOT NULL,
+  `SenderPhoneNumber` varchar(30) NOT NULL,
+  `SenderDistrict` varchar(255) NOT NULL,
+  `SenderRegion` varchar(255) NOT NULL,
+  `SenderCity` varchar(255) NOT NULL,
+  `SenderAddress` varchar(255) NOT NULL,
+  `CreateDate` varchar(50) NOT NULL,
+  `Currency` varchar(10) NOT NULL,
+  `Value` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `api_users`
 --
 
@@ -31,15 +65,16 @@ CREATE TABLE `api_users` (
   `id` int(11) NOT NULL,
   `login` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
-  `token` varchar(100) NOT NULL
+  `token` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `api_users`
 --
 
-INSERT INTO `api_users` (`id`, `login`, `pass`, `token`) VALUES
-(1, 'testLogin', 'testPass', 'd3GER43hog083gfdeDE4dEk4W');
+INSERT INTO `api_users` (`id`, `login`, `pass`, `token`, `name`) VALUES
+(1, 'testLogin', 'testPass', 'd3GER43hog083gfdeDE4dEk4W', 'Test');
 
 -- --------------------------------------------------------
 
@@ -736,6 +771,12 @@ CREATE TABLE `users` (
 --
 
 --
+-- Индексы таблицы `api_test`
+--
+ALTER TABLE `api_test`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `api_users`
 --
 ALTER TABLE `api_users`
@@ -780,6 +821,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
+
+--
+-- AUTO_INCREMENT для таблицы `api_test`
+--
+ALTER TABLE `api_test`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `api_users`

@@ -1,62 +1,90 @@
 <?php
 
 $errorMassage;
+$response;
+
+### Получение всех заголовков ##########
+$headers = apache_request_headers(); ###
+########################################
+
+$data = file_get_contents('php://input');
+$data = json_decode($data);
+
+if($headers['Content-Type'] !== 'application/json; charset=UTF-8') {
+    echo '{"ErrorMassage":"Необходимо использовать JSON данные, в UTF-8 кодировке!"}';
+}
 
 
-# Получить JSON как строку
-$json_str = file_get_contents('php://input');
-$x = '{"s":"sdf"}';
-$x = json_decode($x);
-$x = json_encode($x);
-print($json_str);
-// // Проверяем не пуст ли POST
-// if(!empty($_POST)) {
-//     var_dump($_POST);
-//     exit();
-//     $data = $_POST;
-//     // Принимаем полученые данные
-//     //$data = json_encode($_POST);
-//     //$data = json_decode($data);
+if($headers['Authorization']) {
+    require_once 'db.php';
+
+    
+    $sqlTokenName = 'SELECT `name`, `token` FROM api_users WHERE token = "'.$headers['Authorization'].'"';
+    $resTokenName = $pdo->query($sqlTokenName);
+    $resTokenName = $resTokenName->fetch(PDO::FETCH_ASSOC);
+    
+    if($resTokenName['name']) {
+        
+        // Проверяем если данные в запросе
+        if(!empty($data->Country)
+         && !empty($data->Weight)
+          && !empty($data->BagWeight)
+           && !empty($data->ReceiverFirstName)
+            && !empty($data->ReceiverLastName)
+             && !empty($data->ReceiverPostCode)
+              && !empty($data->ReceiverPhoneNumber)
+               && !empty($data->ReceiverDistrict)
+                && !empty($data->ReceiverRegion)
+                 && !empty($data->ReceiverCity)
+                  && !empty($data->ReceiverAddress)
+                   && !empty($data->Description)
+                    && !empty($data->TypeOfItems)
+                     && !empty($data->SenderFirstName)
+                      && !empty($data->SenderLastName)
+                       && !empty($data->SenderPostCode)
+                        && !empty($data->SenderPhoneNumber)
+                         && !empty($data->SenderDistrict)
+                          && !empty($data->SenderRegion)
+                           && !empty($data->SenderCity)
+                            && !empty($data->SenderAddress)
+                             && !empty($data->CreateDate)
+                              && !empty($data->Currency)
+                               && !empty($data->Value)) {
+                                   // Если все данные есть добовляем их в базу данных
+                                   $sqlCreateShipment = 'INSERT INTO api_'.lcfirst($resTokenName['name']).'(Country,Weight,BagWeight, ReceiverFirstName,ReceiverLastName,ReceiverPostCode,ReceiverPhoneNumber,ReceiverDistrict,ReceiverRegion, ReceiverCity,ReceiverAddress,Description, TypeOfItems, SenderFirstName, SenderLastName, SenderPostCode,SenderPhoneNumber,SenderDistrict,SenderRegion,SenderCity, SenderAddress,CreateDate,Currency,Value) VALUES("'.$data->Country.'", ';
+                                   $sqlCreateShipment .= '"'.$data->Weight.'", "'.$data->BagWeight.'", "'.$data->ReceiverFirstName.'", "'.$data->ReceiverLastName.'", ';
+                                   $sqlCreateShipment .= '"'.$data->ReceiverPostCode.'", "'.$data->ReceiverPhoneNumber.'", "'.$data->ReceiverDistrict.'", "'.$data->ReceiverRegion.'", ';   
+                                   $sqlCreateShipment .= '"'.$data->ReceiverCity.'", "'.$data->ReceiverAddress.'", "'.$data->Description.'", "'.$data->TypeOfItems.'", "'.$data->SenderFirstName.'", ';    
+                                   $sqlCreateShipment .= '"'.$data->SenderLastName.'", "'.$data->SenderPostCode.'", "'.$data->SenderPhoneNumber.'", "'.$data->SenderDistrict.'", "'.$data->SenderRegion.'", ';
+                                   $sqlCreateShipment .= '"'.$data->SenderCity.'", "'.$data->SenderAddress.'", "'.$data->CreateDate.'", "'.$data->Currency.'", "'.$data->Value.'");';   
+
+
+                                    $res = $pdo->query($sqlCreateShipment);
+
+                                    if($res) {
+                                        $response = '{"Success":"Create Shipment"}';
+                                    } else {
+                                        $errorMassage = '{"ErrorMassage":"Произошла ошибка при добавлении данных в базу 1700"}';
+                                    }
+
+        } else {
+            $errorMassage = '{"ErrorMassage":"Отправлены не все необходимые данные 3227"}';
+        }
+
+    } else {
+        $errorMassage = '{"ErrorMassage":"Неверный токен 3226"}';
+    }
+
+} else {
+    $errorMassage = '{"ErrorMassage":"Отсутствует заголовок Authorization 3225"}';
+}
 
 
 
-//     // Проверяем если данные в запросе
-//     if(!empty($data->token)) {
-
-//         // Подключаемся к DB
-//         require_once 'db.php';
-//         // Проверяем токен
-//         $sqlToken = 'SELECT `token` FROM api_users WHERE `token` = "'.$data->token.'";';
-//         $resToken = $pdo->query($sqlToken);
-//         $resToken = $resToken->fetch(PDO::FETCH_ASSOC);
-
-//         // Если токен действительный
-//         if($resToken) {
-            
-//             // Проверяем пароль
-//             $sqlPass = 'SELECT `pass` FROM api_users WHERE `pass` = "'.$data->pass.'";';
-//             $resPass = $pdo->query($sqlPass);
-//             $resPass = $resPass->fetch(PDO::FETCH_ASSOC);
-
-
-//         } else {
-//             // Ошибка если токент не верный
-//             $errorMassage = '{"ErrorMassage":"Токент который вы передаете, нерабочий!"}';
-//         }
-
-//     } else {
-//         // Ошибка если логин или пароль не были отправлены
-//         $errorMassage = '{"ErrorMassage":"Поле с данными Токена отсутствуют!"}';
-//     }
-
-// } else {
-//     // Ошибка если данные не в POST
-//     $errorMassage = '{"ErrorMassage":"Вы используете не допустимый метод отправки данных!"}';
-// }
-
-// // Если есть ошибки отправляем JSON данные об ошибке
-// if(!empty($errorMassage)) {
-//     //$errorMassage = json_encode($errorMassage);
-//     $dataJSON = $errorMassage;
-//     echo $dataJSON;
-// }
+//Если есть ошибки отправляем JSON данные об ошибке
+if(!empty($errorMassage)) {
+    echo $errorMassage;
+}
+if(!empty($response)) {
+    echo $response;
+}

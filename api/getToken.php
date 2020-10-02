@@ -3,6 +3,14 @@
 $errorMassage;
 $token;
 
+### Получение всех заголовков ##########
+$headers = apache_request_headers(); ###
+########################################
+
+if($headers['Content-Type'] !== 'application/json; charset=UTF-8') {
+    echo '{"ErrorMassage":"Необходимо использовать JSON данные, в UTF-8 кодировке 8877"}';
+}
+
 $data = file_get_contents('php://input');
 
 if(!empty($data)) {
@@ -31,21 +39,21 @@ if(!empty($data)) {
                 $token = '{"Token":"'.$resData['token'].'"}';
             } else {
                 // Ошибка при не верном пароле
-                $errorMassage = '{"ErrorMassage":"Пароль не верный!"}';
+                $errorMassage = '{"ErrorMassage":"Пароль не верный 3224"}';
             }
 
         } else {
             // Ошибка если логин не верный
-            $errorMassage = '{"ErrorMassage":"Данные которые вы пытаетесь отправить неверные!"}';
+            $errorMassage = '{"ErrorMassage":"Данные которые вы пытаетесь отправить неверные 3223"}';
         }
 
     } else {
         // Ошибка если логин или пароль не были отправлены
-        $errorMassage = '{"ErrorMassage":"Логин или пароль не заполнены!"}';
+        $errorMassage = '{"ErrorMassage":"Логин или пароль не заполнены 3222"}';
     }
 
 } else {
-    $errorMassage = '{"ErrorMassage":"Вы используете не допустимый метод отправки данных!"}';
+    $errorMassage = '{"ErrorMassage":"Вы отправили пустой объект данных 3221"}';
 }
 
 //Если есть ошибки отправляем JSON данные об ошибке
